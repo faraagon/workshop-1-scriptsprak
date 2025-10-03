@@ -31,12 +31,15 @@ counts = {}
 
 for location in data['locations']:
     for device in location['devices']:
-       #Fetching the type of device
-       device_type = device['type']
-       if device_type not in counts:
-        counts[device_type] = 0
-    counts[device_type] += 1
+        #Fetching the type of device
+        device_type = device['type']
+        #If the device is not already listed in counts start at 0
+        if device_type not in counts:
+            counts[device_type] = 0
+        #increase count by one for this type
+        counts[device_type] += 1
 
+#Headline for report
 report += "\nDevice counts by type:\n"
 for dev_type in sorted(counts):
    report += f"{dev_type}: {counts[dev_type]}\n"

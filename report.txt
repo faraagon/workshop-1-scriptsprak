@@ -13,11 +13,11 @@ Devices with problems
 ==================================================
 
 Device counts by type:
-access_point: 1
-firewall: 3
-load_balancer: 1
-router: 0
-switch: 0
+access_point: 9
+firewall: 5
+load_balancer: 2
+router: 6
+switch: 18
 
 ==================================================
 
