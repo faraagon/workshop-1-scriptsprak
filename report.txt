@@ -1,0 +1,30 @@
+==================================================
+Company: TechCorp AB
+Last updated: 2024-09-30T10:30:00
+==================================================
+
+Devices with problems
+  SW-ACCESS-03    offline   Huvudkontor
+  AP-FLOOR2-02    warning   Huvudkontor
+  RT-LAGER-01     warning   Lager
+  AP-LAGER-02     offline   Lager
+  SW-DC-TOR-02    warning   Datacenter
+
+==================================================
+
+==================================================
+
+Unique vlans:[10, 20, 30, 40, 50, 100, 110, 120, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 2100]
+
+==================================================
+
+Devices with less than 30 days uptime
+SW-ACCESS-03 (0 days) - Huvudkontor
+SW-ACCESS-05 (15 days) - Huvudkontor
+AP-FLOOR2-01 (12 days) - Huvudkontor
+AP-FLOOR2-02 (2 days) - Huvudkontor
+SW-LAGER-02 (23 days) - Lager
+RT-LAGER-01 (2 days) - Lager
+AP-LAGER-02 (0 days) - Lager
+SW-MAL-ACC-02 (8 days) - Kontor Malmö
+SW-DC-TOR-02 (5 days) - Datacenter
