@@ -33,6 +33,13 @@ for location in data['locations']:
     for device in location['devices']:
        #Fetching the type of device
        device_type = device['type']
+       if device_type not in counts:
+        counts[device_type] = 0
+    counts[device_type] += 1
+
+report += "\nDevice counts by type:\n"
+for dev_type in sorted(counts):
+   report += f"{dev_type}: {counts[dev_type]}\n"
 
 report += '\n' + '='*50 + '\n'  
 

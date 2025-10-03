@@ -12,6 +12,13 @@ Devices with problems
 
 ==================================================
 
+Device counts by type:
+access_point: 1
+firewall: 3
+load_balancer: 1
+router: 0
+switch: 0
+
 ==================================================
 
 Unique vlans:[10, 20, 30, 40, 50, 100, 110, 120, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 2100]
