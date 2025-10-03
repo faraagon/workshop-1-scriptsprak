@@ -57,8 +57,11 @@ for location in data['locations']:
       #Look for the key uptime_days and check if value is < 30
       if "uptime_days" in device and device['uptime_days'] < 30:
          #Add device to the report with hostname, uptime and site
-         report += f"{device['hostname'].ljust(15)}\
- - ({str(device['uptime_days']).ljust(2)} days) - {location['site']}\n"
+         report += (
+            f"{device['hostname'].ljust(15)} "
+            f"({str(device['uptime_days']).ljust(2)} days) "
+            f"- {location['site']}\n"
+         )
         
 
         
