@@ -3,16 +3,18 @@ Company: TechCorp AB
 Last updated: 2024-09-30T10:30:00
 ==================================================
 
-Devices with problems
-  SW-ACCESS-03    offline   Huvudkontor
-  AP-FLOOR2-02    warning   Huvudkontor
-  RT-LAGER-01     warning   Lager
-  AP-LAGER-02     offline   Lager
-  SW-DC-TOR-02    warning   Datacenter
+Devices with problem
+
+SW-ACCESS-03    offline    Huvudkontor
+AP-FLOOR2-02    warning    Huvudkontor
+RT-LAGER-01     warning    Lager
+AP-LAGER-02     offline    Lager
+SW-DC-TOR-02    warning    Datacenter
 
 ==================================================
 
-Device counts by type:
+Total number of devices:
+
 access_point: 9
 firewall: 5
 load_balancer: 2
@@ -21,11 +23,17 @@ switch: 18
 
 ==================================================
 
-Unique vlans:[10, 20, 30, 40, 50, 100, 110, 120, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 2100]
+Number of unique VLANs: 19
+
+Unique VLANs:
+10, 20, 30, 40, 50, 100, 110, 120, 
+200, 300, 400, 500, 600, 700, 800, 900, 
+1000, 2000, 2100, 
 
 ==================================================
 
 Devices with less than 30 days uptime
+
 SW-ACCESS-03    (0  days) - Huvudkontor
 SW-ACCESS-05    (15 days) - Huvudkontor
 AP-FLOOR2-01    (12 days) - Huvudkontor

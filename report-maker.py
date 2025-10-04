@@ -14,13 +14,16 @@ report += '='*50 + '\n'
 
 
 # loop through the location list and list offline/warning devices
-report += '\n'+'Devices with problems'+'\n'
+report += '\nDevices with problem\n\n'
 for location in data['locations']:
     #Add hostname, status and location of device with trouble to the report
     for device in location['devices']:
-      if device['status'] in ['offline', 'warning']:
-        report += ('  ' + device['hostname'].ljust(15) 
-                + ' ' + device['status'].ljust(10) + location['site'] + '\n')
+        if device['status'] in ['offline', 'warning']:
+            report += (
+            f"{device['hostname'].ljust(15)} "
+            f"{device['status'].ljust(10)} "
+            f"{location['site'] + '\n'}"
+            )
 
 
 report += '\n' + '='*50 + '\n'  
@@ -40,7 +43,7 @@ for location in data['locations']:
         counts[device_type] += 1
 
 #Headline for report
-report += "\nDevice counts by type:\n"
+report += '\nTotal number of devices:\n\n'
 for dev_type in sorted(counts):
    report += f"{dev_type}: {counts[dev_type]}\n"
 
@@ -48,19 +51,37 @@ report += '\n' + '='*50 + '\n'
 
 #Creates a set for unique VLANs
 vlans = set()
+#Loops through JSON
 for location in data['locations']:
     for device in location['devices']:
         #Checks if there are VLANs and updates the set with unique VLANs
         if 'vlans' in device:
            vlans.update(device['vlans'])
-report += f"\nUnique vlans:{sorted(vlans)}\n"
+
+report += f"\nNumber of unique VLANs: {len(vlans)}"'\n'
+#Sorts VLANs to report them in order
+sorted_vlans = sorted(vlans)
+report += '\nUnique VLANs:\n'
+#Counter to count VLANs per row
+count = 0 
+#Loops through VLANs, sorted
+for vlan in sorted_vlans:
+    #Adds VLAN-number as string and a comma
+    report += str(vlan) + ', '
+    #Increase counter by 1
+    count += 1
+    #When count reaches 8, new line and reset counter
+    if count == 8:
+        report += '\n'
+        count = 0 
 
 
+report += '\n'
 report += '\n' + '='*50 + '\n'      
 
 
 #Adding devices with less than 30 days uptime to report
-report += "\nDevices with less than 30 days uptime\n"
+report += '\nDevices with less than 30 days uptime\n\n'
 for location in data['locations']:
     #Loop through devices
     for device in location['devices']:
@@ -75,7 +96,7 @@ for location in data['locations']:
         
 report += '\n' + '='*50 + '\n'
 
-report += "\nSwitch port usage per site:\n"
+report += '\nSwitch port usage per site:\n'
 #Loop through the sites
 for location in data['locations']:
     site = location['site']
