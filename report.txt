@@ -35,3 +35,14 @@ RT-LAGER-01     (2  days) - Lager
 AP-LAGER-02     (0  days) - Lager
 SW-MAL-ACC-02   (8  days) - Kontor Malmö
 SW-DC-TOR-02    (5  days) - Datacenter
+
+==================================================
+
+Switch port usage per site:
+Huvudkontor     Switches: 7   Ports: 162/216 (75.0%)
+Lager           Switches: 2   Ports: 57/96 (59.4%)
+Kontor Malmö    Switches: 3   Ports: 79/96 (82.3%)
+Datacenter      Switches: 5   Ports: 231/240 (96.2%)
+Säkerhetskopia  Switches: 1   Ports: 12/28 (42.9%)
+
+==================================================

@@ -73,10 +73,35 @@ for location in data['locations']:
             f"- {location['site']}\n"
          )
         
+report += '\n' + '='*50 + '\n'
 
-        
+report += "\nSwitch port usage per site:\n"
+#Loop through the sites
+for location in data['locations']:
+    site = location['site']
+    #Starts counter for switches, used ports and total ports
+    site_switches = 0
+    site_used_ports = 0
+    site_total_ports = 0
+    #Loop through the devices per site
+    for device in location['devices']:
+        #Checks if device is a switch and adds requested numbers to counters
+        if device['type'] == 'switch':
+            site_switches += 1
+            site_used_ports += device['ports']['used']
+            site_total_ports += device['ports']['total']
+    #If site has switches, calculate percentage
+    if site_switches > 0:
+        percent = site_used_ports / site_total_ports * 100 
+        #Adds site, number of switches, used ports/total ports and percentage
+        report += (
+        f"{site.ljust(15)} "
+        f"Switches: {site_switches:<3} "
+        f"Ports: {site_used_ports}/{site_total_ports} "
+        f"({percent:.1f}%)\n"
+        )
 
-
+report += '\n' + '='*50 + '\n'
 
 
 # write the report to text file
