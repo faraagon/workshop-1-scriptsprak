@@ -12,13 +12,20 @@ report += 'Company: ' + data['company'] + '\n'
 report += 'Last updated: ' + data['last_updated']+'\n'
 report += '='*50 + '\n'
 
+#Creating lists for future use
+high_port_usage = []
+offline_devices = []
+low_uptime_devices = []
 
 # loop through the location list and list offline/warning devices
 report += '\nDevices with problems\n\n'
 for location in data['locations']:
-    #Add hostname, status and location of device with trouble to the report
     for device in location['devices']:
         if device['status'] in ['offline', 'warning']:
+            #Adds device information to offline devices list for future use
+            offline_devices.append((device['hostname'], location['site'], device['status']))
+
+            #Add hostname, status and location of device with trouble to the report
             report += (
             f"{device['hostname'].ljust(15)} "
             f"{device['status'].ljust(10)} "
@@ -87,6 +94,9 @@ for location in data['locations']:
     for device in location['devices']:
       #Look for the key uptime_days and check if value is < 30
       if "uptime_days" in device and device['uptime_days'] < 30:
+         #Add it to low uptime list for future use
+         low_uptime_devices.append((device['hostname'], location['site'], device['uptime_days']))
+
          #Add device to the report with hostname, uptime and site
          report += (
             f"{device['hostname'].ljust(15)} "
@@ -106,11 +116,22 @@ for location in data['locations']:
     site_total_ports = 0
     #Loop through the devices per site
     for device in location['devices']:
-        #Checks if device is a switch and adds requested numbers to counters
+        #Checks if device is a switch and adds number to counter
         if device['type'] == 'switch':
             site_switches += 1
+            #Saves values per switch for summary further below
+            used = device['ports']['used']
+            total = device['ports']['total']
+
+            #Adds switch used ports and total ports to total sum per site
             site_used_ports += device['ports']['used']
             site_total_ports += device['ports']['total']
+            
+            
+            #If used ports are above 80%, add them to list for future use
+            if site_total_ports > 0 and (site_used_ports / site_total_ports * 100) > 80:
+                high_port_usage.append((device['hostname'], site, used, total))
+
     #If site has switches, calculate percentage
     if site_switches > 0:
         percent = site_used_ports / site_total_ports * 100 
@@ -146,6 +167,35 @@ for location in data['locations']:
         )
 
 report += '\n' + '='*50 + '\n'
+
+#Summary of issues section
+report += '\nSUMMARY OF ISSUES\n\n'
+#Writes out our saved list in case offline/warning devices are detected
+if offline_devices:
+    report += f"Offline/Warning devices: {len(offline_devices)}\n"
+    for hostname, site, status in offline_devices:
+        report += f"{hostname} ({status}) - {site}\n"
+#If no errors found, run else
+else:
+    report +=  'No warning/online device found'
+#Write out high port usage devices using saved list
+if high_port_usage:
+    report += f"\nDevices with high port usage: {len(high_port_usage)}\n"
+    for hostname, site, used, total in high_port_usage:
+        percent = used / total * 100
+        report += f"{hostname} - {site}: {used}/{total} ({percent:.1f}%)\n"
+#If no high usage found, run else
+else:
+    report += 'No port usage above 80 percent found'
+
+#Write out low uptime devices using saved list
+if low_uptime_devices:
+    report += f"\nDevices with uptime less than 30 days: {len(low_uptime_devices)}\n"
+    for hostname, site, days in low_uptime_devices:
+        report += f"{hostname} - ({days} days) - {site}\n"
+#If no device found, run else
+else:
+    report += 'No low uptime devce found'
 
 
 # write the report to text file
