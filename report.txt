@@ -3,7 +3,7 @@ Company: TechCorp AB
 Last updated: 2024-09-30T10:30:00
 ==================================================
 
-Devices with problem
+Devices with problems
 
 SW-ACCESS-03    offline    Huvudkontor
 AP-FLOOR2-02    warning    Huvudkontor
@@ -52,5 +52,23 @@ Lager           Switches: 2 Ports: 57/96 (59.4%)
 Kontor Malmö    Switches: 3 Ports: 79/96 (82.3%)
 Datacenter      Switches: 5 Ports: 231/240 (96.2%)
 Säkerhetskopia  Switches: 1 Ports: 12/28 (42.9%)
+
+==================================================
+Device status per site
+Huvudkontor:
+Online devices: 13    Offline/warning devices: 2
+----
+Lager:
+Online devices: 3    Offline/warning devices: 2
+----
+Kontor Malmö:
+Online devices: 7    Offline/warning devices: 0
+----
+Datacenter:
+Online devices: 9    Offline/warning devices: 1
+----
+Säkerhetskopia:
+Online devices: 3    Offline/warning devices: 0
+----
 
 ==================================================

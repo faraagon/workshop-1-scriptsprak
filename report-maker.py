@@ -14,7 +14,7 @@ report += '='*50 + '\n'
 
 
 # loop through the location list and list offline/warning devices
-report += '\nDevices with problem\n\n'
+report += '\nDevices with problems\n\n'
 for location in data['locations']:
     #Add hostname, status and location of device with trouble to the report
     for device in location['devices']:
@@ -63,17 +63,17 @@ report += f"\nNumber of unique VLANs: {len(vlans)}"'\n'
 sorted_vlans = sorted(vlans)
 report += '\nUnique VLANs:\n'
 #Counter to count VLANs per row
-count = 0 
+vlan_count = 0 
 #Loops through VLANs, sorted
 for vlan in sorted_vlans:
     #Adds VLAN-number as string and a comma
     report += str(vlan) + ', '
     #Increase counter by 1
-    count += 1
+    vlan_count += 1
     #When count reaches 8, new line and reset counter
-    if count == 8:
+    if vlan_count == 8:
         report += '\n'
-        count = 0 
+        vlan_count = 0 
 
 
 report += '\n'
@@ -124,6 +124,23 @@ for location in data['locations']:
 
 report += '\n' + '='*50 + '\n'
 
+report += 'Device status per site\n'
+
+for location in data['locations']:
+    site = location['site']
+    online_counts = 0
+    offline_counts = 0
+    for device in location['devices']:
+        if device['status'] == 'online':
+            online_counts += 1
+        else: offline_counts += 1
+    report += (
+        f"{site}:"
+        f"\nOnline devices: {online_counts}    "
+        f"Offline/warning devices: {offline_counts}"'\n----\n'
+        )
+
+report += '\n' + '='*50 + '\n'
 
 
 # write the report to text file
