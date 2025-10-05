@@ -5,11 +5,11 @@ Last updated: 2024-09-30T10:30:00
 
 Devices with problems
 
-SW-ACCESS-03    offline    Huvudkontor
-AP-FLOOR2-02    warning    Huvudkontor
-RT-LAGER-01     warning    Lager
-AP-LAGER-02     offline    Lager
-SW-DC-TOR-02    warning    Datacenter
+SW-ACCESS-03    192.168.1.5     offline  Huvudkontor
+AP-FLOOR2-02    192.168.20.102  warning  Huvudkontor
+RT-LAGER-01     192.168.2.254   warning  Lager
+AP-LAGER-02     192.168.200.102 offline  Lager
+SW-DC-TOR-02    10.0.1.2        warning  Datacenter
 
 ==================================================
 
@@ -76,31 +76,36 @@ Online devices: 3    Offline/warning devices: 0
 SUMMARY OF ISSUES
 
 Offline/Warning devices: 5
-SW-ACCESS-03 (offline) - Huvudkontor
-AP-FLOOR2-02 (warning) - Huvudkontor
-RT-LAGER-01 (warning) - Lager
-AP-LAGER-02 (offline) - Lager
-SW-DC-TOR-02 (warning) - Datacenter
+
+SW-ACCESS-03 - offline  - Huvudkontor
+AP-FLOOR2-02 - warning  - Huvudkontor
+RT-LAGER-01  - warning  - Lager
+AP-LAGER-02  - offline  - Lager
+SW-DC-TOR-02 - warning  - Datacenter
 
 Devices with high port usage: 10
-SW-CORE-01 - Huvudkontor: 42/48 (87.5%)
-SW-CORE-02 - Huvudkontor: 38/48 (79.2%)
-SW-DIST-01 - Huvudkontor: 18/24 (75.0%)
-SW-DIST-02 - Huvudkontor: 22/24 (91.7%)
-SW-MAL-ACC-02 - Kontor Malmö: 24/24 (100.0%)
-SW-DC-CORE-01 - Datacenter: 46/48 (95.8%)
-SW-DC-CORE-02 - Datacenter: 46/48 (95.8%)
-SW-DC-TOR-01 - Datacenter: 48/48 (100.0%)
-SW-DC-TOR-02 - Datacenter: 47/48 (97.9%)
-SW-DC-TOR-03 - Datacenter: 44/48 (91.7%)
+
+SW-CORE-01      - Huvudkontor : 42/48 (87.5%)
+SW-CORE-02      - Huvudkontor : 38/48 (79.2%)
+SW-DIST-01      - Huvudkontor : 18/24 (75.0%)
+SW-DIST-02      - Huvudkontor : 22/24 (91.7%)
+SW-MAL-ACC-02   - Kontor Malmö: 24/24 (100.0%)
+SW-DC-CORE-01   - Datacenter  : 46/48 (95.8%)
+SW-DC-CORE-02   - Datacenter  : 46/48 (95.8%)
+SW-DC-TOR-01    - Datacenter  : 48/48 (100.0%)
+SW-DC-TOR-02    - Datacenter  : 47/48 (97.9%)
+SW-DC-TOR-03    - Datacenter  : 44/48 (91.7%)
 
 Devices with uptime less than 30 days: 9
-SW-ACCESS-03 - (0 days) - Huvudkontor
-SW-ACCESS-05 - (15 days) - Huvudkontor
-AP-FLOOR2-01 - (12 days) - Huvudkontor
-AP-FLOOR2-02 - (2 days) - Huvudkontor
-SW-LAGER-02 - (23 days) - Lager
-RT-LAGER-01 - (2 days) - Lager
-AP-LAGER-02 - (0 days) - Lager
-SW-MAL-ACC-02 - (8 days) - Kontor Malmö
-SW-DC-TOR-02 - (5 days) - Datacenter
+
+SW-ACCESS-03  - 0 days - Huvudkontor
+SW-ACCESS-05  - 15 days - Huvudkontor
+AP-FLOOR2-01  - 12 days - Huvudkontor
+AP-FLOOR2-02  - 2 days - Huvudkontor
+SW-LAGER-02   - 23 days - Lager   
+RT-LAGER-01   - 2 days - Lager   
+AP-LAGER-02   - 0 days - Lager   
+SW-MAL-ACC-02 - 8 days - Kontor Malmö
+SW-DC-TOR-02  - 5 days - Datacenter
+
+==================================================

@@ -28,8 +28,10 @@ for location in data['locations']:
             #Add hostname, status and location of device with trouble to the report
             report += (
             f"{device['hostname'].ljust(15)} "
-            f"{device['status'].ljust(10)} "
+            f"{device['ip_address'].ljust(15)} "
+            f"{device['status'].ljust(8)} "
             f"{location['site'] + '\n'}"
+            
             )
 
 
@@ -172,30 +174,32 @@ report += '\n' + '='*50 + '\n'
 report += '\nSUMMARY OF ISSUES\n\n'
 #Writes out our saved list in case offline/warning devices are detected
 if offline_devices:
-    report += f"Offline/Warning devices: {len(offline_devices)}\n"
+    report += f"Offline/Warning devices: {len(offline_devices)}\n\n"
     for hostname, site, status in offline_devices:
-        report += f"{hostname} ({status}) - {site}\n"
+        report += f"{hostname.ljust(12)} - {status.ljust(8)} - {site}\n"
 #If no errors found, run else
 else:
     report +=  'No warning/online device found'
 #Write out high port usage devices using saved list
 if high_port_usage:
-    report += f"\nDevices with high port usage: {len(high_port_usage)}\n"
+    report += f"\nDevices with high port usage: {len(high_port_usage)}\n\n"
     for hostname, site, used, total in high_port_usage:
         percent = used / total * 100
-        report += f"{hostname} - {site}: {used}/{total} ({percent:.1f}%)\n"
+        report += f"{hostname.ljust(15)} - {site.ljust(12)}: {used}/{total} ({percent:.1f}%)\n"
 #If no high usage found, run else
 else:
     report += 'No port usage above 80 percent found'
 
 #Write out low uptime devices using saved list
 if low_uptime_devices:
-    report += f"\nDevices with uptime less than 30 days: {len(low_uptime_devices)}\n"
+    report += f"\nDevices with uptime less than 30 days: {len(low_uptime_devices)}\n\n"
     for hostname, site, days in low_uptime_devices:
-        report += f"{hostname} - ({days} days) - {site}\n"
+        report += f"{hostname.ljust(13)} - {days} days - {site}\n"
 #If no device found, run else
 else:
     report += 'No low uptime devce found'
+
+report += '\n' + '='*50 + '\n'
 
 
 # write the report to text file
