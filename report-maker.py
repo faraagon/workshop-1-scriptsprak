@@ -125,15 +125,20 @@ for location in data['locations']:
 report += '\n' + '='*50 + '\n'
 
 report += 'Device status per site\n'
-
+#Loop through locations
 for location in data['locations']:
+    #Create variable for site and counters for online/offline
     site = location['site']
     online_counts = 0
     offline_counts = 0
+    #Loop through devices
     for device in location['devices']:
+        #Add devices with status online to online counter
         if device['status'] == 'online':
             online_counts += 1
+        #Else the rest of the devices to offline counter
         else: offline_counts += 1
+    #Add site with both counters to report
     report += (
         f"{site}:"
         f"\nOnline devices: {online_counts}    "
