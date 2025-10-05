@@ -30,22 +30,22 @@ report += '\n' + '='*50 + '\n'
 
 
 #Creating a counter for different devices
-counts = {} 
+device_counts = {} 
 
 for location in data['locations']:
     for device in location['devices']:
         #Fetching the type of device
         device_type = device['type']
         #If the device is not already listed in counts start at 0
-        if device_type not in counts:
-            counts[device_type] = 0
+        if device_type not in device_counts:
+            device_counts[device_type] = 0
         #increase count by one for this type
-        counts[device_type] += 1
+        device_counts[device_type] += 1
 
 #Headline for report
 report += '\nTotal number of devices:\n\n'
-for dev_type in sorted(counts):
-   report += f"{dev_type}: {counts[dev_type]}\n"
+for dev_type in sorted(device_counts):
+   report += f"{dev_type}: {device_counts[dev_type]}\n"
 
 report += '\n' + '='*50 + '\n'  
 
@@ -117,12 +117,13 @@ for location in data['locations']:
         #Adds site, number of switches, used ports/total ports and percentage
         report += (
         f"{site.ljust(15)} "
-        f"Switches: {site_switches:<3} "
+        f"Switches: {site_switches} "
         f"Ports: {site_used_ports}/{site_total_ports} "
         f"({percent:.1f}%)\n"
         )
 
 report += '\n' + '='*50 + '\n'
+
 
 
 # write the report to text file

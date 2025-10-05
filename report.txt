@@ -47,10 +47,10 @@ SW-DC-TOR-02    (5  days) - Datacenter
 ==================================================
 
 Switch port usage per site:
-Huvudkontor     Switches: 7   Ports: 162/216 (75.0%)
-Lager           Switches: 2   Ports: 57/96 (59.4%)
-Kontor Malmö    Switches: 3   Ports: 79/96 (82.3%)
-Datacenter      Switches: 5   Ports: 231/240 (96.2%)
-Säkerhetskopia  Switches: 1   Ports: 12/28 (42.9%)
+Huvudkontor     Switches: 7 Ports: 162/216 (75.0%)
+Lager           Switches: 2 Ports: 57/96 (59.4%)
+Kontor Malmö    Switches: 3 Ports: 79/96 (82.3%)
+Datacenter      Switches: 5 Ports: 231/240 (96.2%)
+Säkerhetskopia  Switches: 1 Ports: 12/28 (42.9%)
 
 ==================================================
